@@ -13,8 +13,8 @@ import os
 proj_path = ""
 db_file = proj_path + "combatfootage.sqlite"
 
-ad_list = os.listdir("cf_vids")
-ad_list = [x[:-4] for x in ad_list]
+#ad_list = os.listdir("cf_vids")
+#ad_list = [x[:-4] for x in ad_list]
 
 place=open(proj_path + 'place.txt','r').read()
 
@@ -30,7 +30,7 @@ cf_db = cf_db.iloc[0:10000]
 #cf_db = cf_db.iloc[0:5]
 #cf_db = cf_db.sample(100)
 
-cf_db = cf_db.loc[~cf_db.id.isin(ad_list)]
+#cf_db = cf_db.loc[~cf_db.id.isin(ad_list)]
 
 #no_download_ids = pd.DataFrame(columns=["id_", "exception_type", "exception_message"])
 #downloaded_ids = pd.DataFrame(columns=["id_"])
@@ -72,8 +72,8 @@ if len(cf_db) > 0:
         downloaded_ids.to_parquet(proj_path + "downloaded_list.parquet")
         
     
-    #no_download_ids.to_parquet(proj_path + "no_download_list.parquet")
-    #downloaded_ids.to_parquet(proj_path + "downloaded_list.parquet")
+    no_download_ids.to_parquet(proj_path + "no_download_list.parquet")
+    downloaded_ids.to_parquet(proj_path + "downloaded_list.parquet")
     
     old_place = str(place)
     new_place = str(min(cf_db.created_utc))
