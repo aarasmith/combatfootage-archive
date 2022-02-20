@@ -39,7 +39,8 @@ if len(cf_db) > 0:
             "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
             "outtmpl": f"{file_name}.mp4",
             "cookiefile": "yt_cookies.txt",
-            "noplaylist": True
+            "noplaylist": True,
+            "noprogress": True
             }
         try:
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -65,4 +66,4 @@ if len(cf_db) > 0:
     print(f"Log entry: Downloaded from {old_place} to {new_place} at {time.time()}")
 
 else:
-    print("Log entry: No entries to download: {time.time()}")
+    print(f"Log entry: No entries to download: {time.time()}")

@@ -47,11 +47,18 @@ if len(cf_db) > 0:
                 "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
                 "outtmpl": f"{file_name}.mp4",
                 "cookiefile": "yt_cookies.txt",
-                "noplaylist": True
+                "noplaylist": True,
+                "noprogress": True,
+                "overwrites": False,
+                "download_archive": "download_archive.txt",
+                "skip_download": False,
+                "force_write_download_archive": False
                 }
             try:
                 with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                    ydl.download([url])
+                    #ydl.download([url])
+                    info_dict = ydl.extract_info(url, download=True)
+                    info_dict.get('title', None)
             except BaseException as ex:
                 try:
                     ex_type, ex_value = sys.exc_info()[0:2]
