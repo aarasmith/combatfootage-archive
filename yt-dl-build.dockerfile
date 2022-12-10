@@ -61,4 +61,5 @@ RUN set -x && \
 # # Copy init script, set workdir & entrypoint
 VOLUME /project
 WORKDIR /project
-ENTRYPOINT ["python"]
+# ENTRYPOINT ["python"]
+CMD ["bash"]
