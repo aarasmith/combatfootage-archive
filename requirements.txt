@@ -2,3 +2,6 @@ yt-dlp
 pdfkit
 pandas
 bs4
+kafka
+kafka-logging-handler
+configparser
